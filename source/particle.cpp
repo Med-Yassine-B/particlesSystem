@@ -15,21 +15,16 @@ void ParticleSource::create(){
     
     for(int i=0;i<number;i++){
         
-        //how far from the center
-        int range=30;
-        float x=float(rand()%(2*range)-range)/100;
-        float y=float(rand()%(2*range)-range)/100;
-        data[i*6+0]=-size+x;
-        data[i*6+1]=-size+y;
+        data[i*6+0]=centerX-size;
+        data[i*6+1]=centerY-size;
 
-        data[i*6+2]=-size+x;
-        data[i*6+3]= size+y;
+        data[i*6+2]=centerX-size;
+        data[i*6+3]=centerY+size;
 
-        data[i*6+4]=size+x;
-        data[i*6+5]=size+y;
+        data[i*6+4]=centerX+size;
+        data[i*6+5]=centerY+size;
 
-        //where to move
-        range=10;
+        int range=10;
         velocitys[i*2+0]=float(rand()%(2*range)-range)/1000;
         velocitys[i*2+1]=float(rand()%(2*range)-range)/1000;
 
@@ -44,16 +39,16 @@ void ParticleSource::create(){
 //======================================================
 void ParticleSource::move_particels(){
     for(int i=0;i<number;i++){
-        if(sq_distance(0, 0,data[i*6+0],data[i*6+1])>=0.3){
+        if(sq_distance(centerX, centerY,data[i*6+0],data[i*6+1])>=max_dist){
 
-            data[i*6+0]=-size;
-            data[i*6+1]=-size;
+            data[i*6+0]=centerX-size;
+            data[i*6+1]=centerY-size;
 
-            data[i*6+2]=-size;
-            data[i*6+3]=size;
+            data[i*6+2]=centerX-size;
+            data[i*6+3]=centerY+size;
 
-            data[i*6+4]=size;
-            data[i*6+5]=size;
+            data[i*6+4]=centerX+size;
+            data[i*6+5]=centerY+size;
         }
 
         data[i*6+0]+=velocitys[i*2+0];

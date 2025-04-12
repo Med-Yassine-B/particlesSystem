@@ -4,7 +4,12 @@ App::App(Renderer *renderer){
         this->renderer=renderer;
         crashed=this->renderer->crashed;
         ParticleSource source;
+        source.centerY=0.5;
         p_sources.push_back(source);
+
+        ParticleSource source2;
+        source2.centerY=-0.5;
+        p_sources.push_back(source2);
 
 }
 //======================================================

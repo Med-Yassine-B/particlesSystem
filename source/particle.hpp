@@ -6,7 +6,9 @@ class ParticleSource{
     int number;
     float size;
     float* velocitys;
-    float max_dist=0.1;
+    float centerX=0;
+    float centerY=0;
+    float max_dist=0.2;
 
     ParticleSource();
     void create();
